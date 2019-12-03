@@ -1,0 +1,135 @@
+select * from 选整表
+
+select column_name1,columu_name2,... from  选某几列
+
+select distinct column_name from 只选一列并且对该列去重
+
+select * from ... order by column1,column2 desc 先按列1升序，再按列2降序
+
+insert into table_name (column1,column2,column3,...)  插入一行数据
+values (v1,v2,v3,...)
+
+update  table_name   修改某些列数据
+set column1=values1,column2=values2,...
+where ...
+
+delete from table_name  删除某行数据
+where...
+
+top/limit  选头几条数据
+select top n * from ...
+select * from ... limit n
+
+%,_,__,通配符
+REGEXP, NOT REGEXP 通过这两个来操作正则表达式 [a-z],[^a-z]
+
+select * from ... where column in (value1,value2,value3） 选择某列值为value1或value2或value3
+
+select * from ... where column between value1 and value2 选择某列值在value1和value2之间
+
+select column1 as c1,column2 as c2 from ... 给列取别名
+select * from table_name as t 给表取别名
+select concat(column1,column2,column3) as c from  把多列数据整合到一列
+
+select table1.c, table2.d from table1 只返回两表匹配到的行
+
+inner join table2
+on table1.a=table2.b
+
+select table1.c, table2.d  from table1  返回左表table1所有的行，右表若无匹配，则返回null
+left join table2
+on table1.a=table2.b
+
+select table1.c, table2.d from table1 返回右表table2所有的行，左表若无匹配，则返回null
+right join table2
+on table1.a=table2.b
+
+select table1.c, table2.d from table1 返回两表所有的行，若无匹配，则返回null
+full outer join table2
+on table1.a=table2.b
+
+SELECT country, name FROM Websites   union会去重，union all不去重，union里的几个select列数要相同，对应列的数据类型也要相同
+WHERE country='CN'
+UNION ALL
+SELECT country, app_name FROM apps
+WHERE country='CN'
+ORDER BY country
+
+select column1,column2,...  从旧表中复制指定列数据到一个新表中，新表会自动创建
+into new table
+from old table
+
+insert into old table(column1,column2,...)  从旧表中复制指定列数据，插入一个已经存在的表，并且这个表的原有数据不受影响
+select column1,column2,... from old table
+
+create database messi_db 创建数据库
+
+create table messi              创建数据表
+（
+column_name1 data_type(size),
+column_name1 data_type(size),
+column_name1 data_type(size),
+...
+）;
+
+not null约束     某列数据不能为空
+
+unique约束      某列每一行的数据都有唯一性
+1、每个表可以有多个unique约束
+2、给多列增加unique约束并给其命名：constraint uc_name unique (p_id, p_number)
+
+primary key约束：
+1、自动包含unique约束 
+2、主键的列不能有null
+3、每个表只能包含一个主键
+4、多列可以共同形成一个主键并给主键命名： constraint pk_name primary key (p_id, LastName)
+
+foreign key约束：
+1、指向另一表的主键
+2、多列可以共同形成一个外键并给外键命名：constraint fk_name foreign key (p_id1, p_id2) references table2 (p_id1,p_id2)
+
+check约束：
+1、对单列或多列进行值的约束
+2、constraint ck_name check (p_id1>0 and  p_id2<10)
+
+default约束：
+1、给某列增加默认值
+
+drop table  xxx 删除表
+
+drop database xxx 删除数据库
+
+truncate table xxx 删除表的内容，保留表本身
+
+alter table xxx   增加一列
+add column_name datatype
+
+alter table xxx  删除一列
+drop column column_name
+
+alter table xxx 修改一列的数据类型
+alter column column_name datatype
+
+auto_increment 主键自增
+
+遗留问题：
+1、索引的理解
+2、视图和表的关系
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
